@@ -9,7 +9,12 @@ import { MainComponent } from "./main/main.component";
 
 const routes: Routes = [
     {
-      path: '',
+      path: '', pathMatch: 'full',
+      redirectTo: 'home'
+    },
+
+    {
+      path: 'home',
       component: HomeComponent
     },
 

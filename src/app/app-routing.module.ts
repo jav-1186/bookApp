@@ -4,7 +4,7 @@ import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './Home/home.component';
 import { GoalsComponent } from './goals/goals.component';
 import { LibraryComponent } from './library/library.component';
-import { MainComponent } from "./main/main.component";
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [

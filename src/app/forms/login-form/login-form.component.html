@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    <h2>Login</h2>
+    <form>
+      <input [(ngModel)]="user.userName" type="text" name="userName" class="form-control" id="userName"
+        placeholder="Enter username">
+
+      <input [(ngModel)]="user.password" type="text" name="password" class="form-control" id="password"
+        placeholder="Enter Password">
+    </form>
+    <div class="row">
+      <button class="btn btn-info" (click)="loginAttempt()">Login</button>
+      <a class="btn btn-info" href="" role="button">Register Here!</a>
+    </div>
+  </div>
+</div>

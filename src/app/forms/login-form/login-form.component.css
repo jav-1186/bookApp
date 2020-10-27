@@ -1,0 +1,19 @@
+h2{
+  text-align: center;
+}
+
+a{
+  margin-left: 15px;
+}
+
+.container{
+  width: 500px;
+}
+
+.form-control{
+  margin: 15px;
+}
+
+.row{
+  margin-left: 15px;
+}

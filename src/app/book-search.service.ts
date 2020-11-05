@@ -11,9 +11,9 @@ export class BookSearchService {
 
   key = "AIzaSyBAtb9s9LonTdKUIS_8q3iC_K7cQ81mTMk"
   constructor(private httpClient: HttpClient) { }
-  get(queryField: string)
+  get(queryField): Observable<any>
   {
     return this.httpClient.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${queryField}&maxResults=39&keyes&key=${this.key}`);
+      `https://www.googleapis.com/books/v1/volumes?q=${queryField}+subject:fiction&maxResults=10&keyes&key=${this.key}`);
   }
 }

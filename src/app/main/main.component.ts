@@ -21,16 +21,26 @@ export class MainComponent implements OnInit {
   ngOnInit(): void
   {}
 
-  onSubmit(form:NgForm){
-    this.queryField = form.value.searchVariable;
-     this.booksearchsrevice.get(form.value.searchVariable).subscribe((data)=>{
+  onSubmit(){
+     this.booksearchsrevice.get(this.queryField).subscribe((data)=>{
        this.items = data['items'];
        console.log(data);
 
        console.log("test");
        //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
-       console.log(form.value.searchVariable);
+       console.log(this.queryField);
      });
   }
 
+  onSubmitISBN(){
+
+     this.booksearchsrevice.getIsbn(this.queryField).subscribe((data)=>{
+       this.items = data['items'];
+       console.log(data);
+
+       console.log("test");
+       //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+       console.log(this.queryField);
+     });
+  }
 }

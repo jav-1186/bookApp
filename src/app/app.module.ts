@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +16,9 @@ import { AccountComponent } from './account/account.component';
 import { GoalsComponent } from './goals/goals.component';
 import { LibraryComponent } from './library/library.component';
 import { MainComponent } from './main/main.component';
+import { LoginFormComponent } from './forms/login-form/login-form.component';
+import { SearchFormComponent } from './forms/search-form/search-form.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +29,9 @@ import { MainComponent } from './main/main.component';
     AccountComponent,
     GoalsComponent,
     LibraryComponent,
-    MainComponent
+    MainComponent,
+    LoginFormComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

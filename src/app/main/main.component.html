@@ -1,7 +1,7 @@
 <div class="row" style="margin-top: 30px">
 
   <div class="col-sm-3" style="margin-left: 30px">
-    <form class="form-group">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)"class="form-group">
       <p>
         <label>Search Book Category</label>
         <input class="form-control" type="text"></p>
@@ -13,7 +13,14 @@
       <p></p>
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
+    <div *ngFor="let item of items">
+      <h2>{{item?.volumeInfo.title}}</h2>
+      <p>{{item?.volumeInfo.authors}}</p>
+      <p>{{item?.volumeInfo.description}}</p>
   </div>
+  </div>
+
+
 
   <div class="col-sm-4" style="margin-left: 30px">
     <h2>

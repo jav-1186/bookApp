@@ -1,12 +1,17 @@
 <div class="row">
   <div class="col-sm-5" style="margin-left: 30px;">
     <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-group">
-        <label>Search Book Category</label>
-        <input class="form-control" [(ngModel)]='queryField' name="queryField" type="text" placeholder="Enter category">
+        <label>Search by title</label>
+        <input class="form-control" [(ngModel)]='queryField' name="queryField" type="text" placeholder="Enter title">
+      <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+    <form #searchForm="ngForm" (ngSubmit)="onSubmitSubject()" class="form-group">
+      <label>Search by subject</label>
+      <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="text" placeholder="Enter category">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
     <form #searchForm="ngForm" (ngSubmit)="onSubmitISBN()" class="form-group">
-      <label>Search ISBN</label>
+      <label>Search by ISBN</label>
       <input class="form-control" [(ngModel)]='queryField2' name="queryField2" type="text" placeholder="Enter ISBN">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>

@@ -18,6 +18,7 @@ export class SearchFormComponent implements OnInit {
   items;
   queryField;
   queryField2;
+  queryField3;
   constructor(private booksearchsrevice: BookSearchService) { }
 
   ngOnInit(): void
@@ -33,6 +34,18 @@ export class SearchFormComponent implements OnInit {
        console.log(this.queryField);
      });
   }
+
+  onSubmitSubject(){
+
+    this.booksearchsrevice.getSubject(this.queryField3).subscribe((data)=>{
+      this.items = data['items'];
+      console.log(data);
+
+      console.log("test");
+      //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+      console.log(this.queryField3);
+    });
+ }
 
   onSubmitISBN(){
 

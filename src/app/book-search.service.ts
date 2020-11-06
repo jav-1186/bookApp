@@ -17,6 +17,12 @@ export class BookSearchService {
       `https://www.googleapis.com/books/v1/volumes?q=${queryField}+subject:fiction&maxResults=10&keyes&key=${this.key}`);
   }
 
+  getSubject(queryField): Observable<any>
+  {
+    return this.httpClient.get(
+      `https://www.googleapis.com/books/v1/volumes?q=subject:${queryField}+&maxResults=10&keyes&key=${this.key}`);
+  }
+
   getIsbn(queryField): Observable<any>
   {
     return this.httpClient.get(

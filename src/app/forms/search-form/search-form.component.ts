@@ -1,26 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { BookSearchService } from "../../book-search.service";
+import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from "@angular/forms";
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css']
 })
+
 export class SearchFormComponent implements OnInit {
+  items;
+  queryField;
+  queryField2;
+  constructor(private booksearchsrevice: BookSearchService) { }
 
-  book: {category, isbn} = {category: '', isbn: null};
+  ngOnInit(): void
+  {}
 
-  constructor() { }
+  onSubmit(){
+     this.booksearchsrevice.get(this.queryField).subscribe((data)=>{
+       this.items = data['items'];
+       console.log(data);
 
-  ngOnInit(): void {
+       console.log("test");
+       //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+       console.log(this.queryField);
+     });
   }
 
-  categorySearch(): void{
-    console.log('Category Search: ' + this.book.category);
-    this.book = {category: '', isbn: null};
-  }
+  onSubmitISBN(){
 
-  isbnSearch(): void{
-    console.log('ISBN Search: ' + this.book.isbn);
-    this.book = {category: '', isbn: null};
+     this.booksearchsrevice.getIsbn(this.queryField2).subscribe((data)=>{
+       this.items = data['items'];
+       console.log(data);
+
+       console.log("test");
+       //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+       console.log(this.queryField2);
+     });
   }
 }

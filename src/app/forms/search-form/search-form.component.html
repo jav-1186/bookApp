@@ -9,7 +9,7 @@
 
     <form #searchForm="ngForm" (ngSubmit)="onSubmitSubject()" class="form-group">
       <label>Search by subject</label>
-      <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="text" placeholder="Enter category">
+      <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="text" placeholder="Enter subject">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
 
@@ -24,9 +24,19 @@
       <div class="card-header">
         <h4>{{selectedItem.volumeInfo.title + ' by ' + selectedItem.volumeInfo.authors}}</h4>
       </div>
-      <div class="card-block" style = "margin-top: 10px;">
-        <p class="card-text text-left">
-          {{'Page count: ' + selectedItem.volumeInfo.pageCount}}
+      <div class="card-block" style="margin-top: 10px;">
+        <p class="font-weight-bold" style="text-align: left">Summary:<br>
+          <span class="font-weight-normal" *ngIf="selectedItem.searchInfo">{{selectedItem.searchInfo.textSnippet}}</span>
+          <span class="font-weight-normal" *ngIf="!selectedItem.searchInfo">N/A</span>
+        </p>
+        <p class="font-weight-bold" style="text-align: left">Genre:
+          <span class="font-weight-normal">{{selectedItem.volumeInfo.categories}}</span>
+        </p>
+        <p class="font-weight-bold" style="text-align: left">Page count:
+          <span class="font-weight-normal">{{selectedItem.volumeInfo.pageCount}}</span>
+        </p>
+        <p class="font-weight-bold" style="text-align: left">Published:
+          <span class="font-weight-normal">{{selectedItem.volumeInfo.publishedDate}}</span>
         </p>
       </div>
     </div>

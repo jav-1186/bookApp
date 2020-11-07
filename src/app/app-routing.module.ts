@@ -5,6 +5,7 @@ import { HomeComponent } from './Home/home.component';
 import { GoalsComponent } from './goals/goals.component';
 import { LibraryComponent } from './library/library.component';
 import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
     {
       path: 'main',
       component: MainComponent
+    },
+
+    {
+      path: 'login',
+      component: LoginComponent
     }
 
 ];

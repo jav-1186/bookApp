@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BookSearchService } from "../../book-search.service";
-import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  FormBuilder,
-} from "@angular/forms";
+import { BookSearchService } from '../../book-search.service';
+// import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
+// import {
+//   FormControl,
+//   FormGroup,
+//   Validators,
+//   FormBuilder,
+// } from "@angular/forms";
 
 @Component({
   selector: 'app-search-form',
@@ -15,6 +15,7 @@ import {
 })
 
 export class SearchFormComponent implements OnInit {
+  key = 'items';
   items;
   queryField;
   queryField2;
@@ -25,42 +26,40 @@ export class SearchFormComponent implements OnInit {
   ngOnInit(): void
   {}
 
-  onSubmit(){
-     this.booksearchsrevice.get(this.queryField).subscribe((data)=>{
-       this.items = data['items'];
+  onSubmit(): void{
+     this.booksearchsrevice.get(this.queryField).subscribe((data) => {
+       this.items = data[this.key];
        console.log(data);
 
-       console.log("test");
-       //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+       console.log('test');
+       // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
        console.log(this.queryField);
      });
   }
 
-  onSubmitSubject(){
-
-    this.booksearchsrevice.getSubject(this.queryField3).subscribe((data)=>{
-      this.items = data['items'];
+  onSubmitSubject(): void{
+    this.booksearchsrevice.getSubject(this.queryField3).subscribe((data) => {
+      this.items = data[this.key];
       console.log(data);
 
-      console.log("test");
-      //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+      console.log('test');
+      // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
       console.log(this.queryField3);
     });
  }
 
-  onSubmitISBN(){
-
-     this.booksearchsrevice.getIsbn(this.queryField2).subscribe((data)=>{
-       this.items = data['items'];
+  onSubmitISBN(): void{
+     this.booksearchsrevice.getIsbn(this.queryField2).subscribe((data) => {
+       this.items = data[this.key];
        console.log(data);
 
-       console.log("test");
-       //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
+       console.log('test');
+       // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
        console.log(this.queryField2);
      });
   }
 
-  selectItem(item){
+  selectItem(item): void{
     this.selectedItem = item;
   }
 }

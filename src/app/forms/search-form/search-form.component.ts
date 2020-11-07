@@ -35,6 +35,7 @@ export class SearchFormComponent implements OnInit {
        // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
        console.log(this.queryField);
      });
+     this.clear();
   }
 
   onSubmitSubject(): void{
@@ -45,6 +46,7 @@ export class SearchFormComponent implements OnInit {
       console.log('test');
       // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
       console.log(this.queryField3);
+      this.clear();
     });
  }
 
@@ -56,10 +58,17 @@ export class SearchFormComponent implements OnInit {
        console.log('test');
        // console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
        console.log(this.queryField2);
+       this.clear();
      });
   }
 
   selectItem(item): void{
     this.selectedItem = item;
+  }
+
+  private clear(): void{
+    this.queryField = '';
+    this.queryField2 = '';
+    this.queryField3 = '';
   }
 }

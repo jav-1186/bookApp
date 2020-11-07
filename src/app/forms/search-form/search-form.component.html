@@ -19,7 +19,6 @@
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
 
-
     <div class="card text-center" *ngIf="selectedItem">
       <div class="card-header">
         <h4>{{selectedItem.volumeInfo.title + ' by ' + selectedItem.volumeInfo.authors}}</h4>
@@ -46,7 +45,7 @@
   <div class="col-sm-4" style="margin-left: 30px; margin-bottom: 30px;">
     <h2>Search Results</h2>
     <div *ngFor="let item of items">
-      <h4>Book Title: {{item?.volumeInfo.title}}</h4>
+      <h4>Title: {{item?.volumeInfo.title}}</h4>
       <p>Author: {{item?.volumeInfo.authors}}</p>
       <p>
         <button class="btn btn-primary" (click)="selectItem(item)"> Show Details</button>

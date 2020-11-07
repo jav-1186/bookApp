@@ -19,6 +19,7 @@ export class SearchFormComponent implements OnInit {
   queryField;
   queryField2;
   queryField3;
+  selectedItem;
   constructor(private booksearchsrevice: BookSearchService) { }
 
   ngOnInit(): void
@@ -57,5 +58,9 @@ export class SearchFormComponent implements OnInit {
        //console.log(this.items[1].volumeInfo.imageLinks.thumbnail);
        console.log(this.queryField2);
      });
+  }
+
+  selectItem(item){
+    this.selectedItem = item;
   }
 }

@@ -1,26 +1,46 @@
 <div class="row">
+
   <div class="col-sm-5" style="margin-left: 30px;">
     <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-group">
       <label>Search by title</label>
       <input class="form-control" [(ngModel)]='queryField' name="queryField" type="text" placeholder="Enter title">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
+
     <form #searchForm="ngForm" (ngSubmit)="onSubmitSubject()" class="form-group">
       <label>Search by subject</label>
       <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="text" placeholder="Enter category">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
+
     <form #searchForm="ngForm" (ngSubmit)="onSubmitISBN()" class="form-group">
       <label>Search by ISBN</label>
       <input class="form-control" [(ngModel)]='queryField2' name="queryField2" type="text" placeholder="Enter ISBN">
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
+
+
+    <div class="card text-center" *ngIf="selectedItem">
+      <div class="card-header">
+        <h4>{{selectedItem.volumeInfo.title + ' by ' + selectedItem.volumeInfo.authors}}</h4>
+      </div>
+      <div class="card-block" style = "margin-top: 10px;">
+        <p class="card-text text-left">
+          {{'Page count: ' + selectedItem.volumeInfo.pageCount}}
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div class="col-sm-4" style="margin-left: 30px">
+
+  <div class="col-sm-4" style="margin-left: 30px; margin-bottom: 30px;">
     <h2>Search Results</h2>
     <div *ngFor="let item of items">
       <h4>Book Title: {{item?.volumeInfo.title}}</h4>
       <p>Author: {{item?.volumeInfo.authors}}</p>
+      <p>
+        <button class="btn btn-primary" (click)="selectItem(item)"> Show Details</button>
+      </p>
     </div>
   </div>
+</div>

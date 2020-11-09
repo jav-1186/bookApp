@@ -17,7 +17,7 @@ export class AuthService {
 
   login() {
     this.auth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
       .then(function(result) {sessionStorage.setItem('loggedIn', '1');
       });
   }

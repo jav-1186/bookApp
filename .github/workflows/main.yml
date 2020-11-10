@@ -35,7 +35,7 @@ jobs:
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
         env:
-          FIREBASE_TOKEN: 1//01bCdrADEOx0zCgYIARAAGAESNwF-L9IrVkZKL3BFVLpky23gZERNeui6LEm_qcNIk3trz-xdAxZu4U7xLeQ9cwelCDSMXwAjtb8
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.5.9

@@ -15,5 +15,9 @@ a{
 }
 
 .row{
+  margin-left: 0;
+}
+
+.btn-info{
   margin-left: 15px;
 }

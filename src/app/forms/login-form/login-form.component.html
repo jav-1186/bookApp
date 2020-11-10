@@ -16,11 +16,40 @@
       </form>
       <div class="row">
         <button class="btn btn-info" (click)="loginAttempt()">Login</button>
-        <a class="btn btn-info" href="" role="button">Register Here!</a>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+          Register
+        </button>
       </div>
       <div class="row" style="margin-top: 10px">
         <button class="btn btn-info" (click)="login()">Login with Google</button>
       </div>
     </div>
   </ng-template>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>

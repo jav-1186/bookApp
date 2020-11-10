@@ -1,16 +1,26 @@
 <div class="container">
-  <div>
-    <h2>Login</h2>
-    <form>
-      <input [(ngModel)]="user.userName" type="text" name="userName" class="form-control" id="userName"
-        placeholder="Enter username">
-
-      <input [(ngModel)]="user.password" type="text" name="password" class="form-control" id="password"
-        placeholder="Enter Password">
-    </form>
-    <div class="row">
-      <button class="btn btn-info" (click)="loginAttempt()">Login</button>
-      <a class="btn btn-info" href="" role="button">Register Here!</a>
-    </div>
+  <div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }} !</h1>
+    <button (click)="logout()">Logout</button>
   </div>
+
+  <ng-template #showLogin>
+    <div>
+      <h2>Login</h2>
+      <form>
+        <input [(ngModel)]="user.userName" type="text" name="userName" class="form-control" id="userName"
+          placeholder="Enter username">
+
+        <input [(ngModel)]="user.password" type="text" name="password" class="form-control" id="password"
+          placeholder="Enter Password">
+      </form>
+      <div class="row">
+        <button class="btn btn-info" (click)="loginAttempt()">Login</button>
+        <a class="btn btn-info" href="" role="button">Register Here!</a>
+      </div>
+      <div class="row" style="margin-top: 10px">
+        <button class="btn btn-info" (click)="login()">Login with Google</button>
+      </div>
+    </div>
+  </ng-template>
 </div>

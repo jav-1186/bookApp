@@ -32,7 +32,7 @@ jobs:
       - run: ng build --prod --output-path=dist --base-href="https://jav-1186.github.io/bookApp/"
 
       - name: Deploy angular app to Firebase
-      - run: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:

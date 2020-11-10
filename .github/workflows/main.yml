@@ -43,7 +43,7 @@ jobs:
         with:
           FOLDER : dist
           branch: gh-pages
-          github_token : 1//01bCdrADEOx0zCgYIARAAGAESNwF-L9IrVkZKL3BFVLpky23gZERNeui6LEm_qcNIk3trz-xdAxZu4U7xLeQ9cwelCDSMXwAjtb8
+          github_token : ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script

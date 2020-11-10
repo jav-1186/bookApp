@@ -30,6 +30,14 @@ jobs:
       - run: npm install
       - run: npm install -g @angular/cli > /dev/null
       - run: ng build --prod --output-path=dist --base-href="https://jav-1186.github.io/bookApp/"
+
+      - name: Deploy angular app to Firebase
+      - run: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: 1//01bCdrADEOx0zCgYIARAAGAESNwF-L9IrVkZKL3BFVLpky23gZERNeui6LEm_qcNIk3trz-xdAxZu4U7xLeQ9cwelCDSMXwAjtb8
+
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:

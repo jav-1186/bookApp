@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookSearchService } from '../../book-search.service';
+import { BookSearchService } from '../../services/book-search.service';
 import { LibraryDataService } from '../../services/library-data.service';
 // import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 // import {

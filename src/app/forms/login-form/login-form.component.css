@@ -12,12 +12,21 @@ a{
 
 .form-control{
   margin: 15px;
+  width: 400px;
 }
 
 .row{
   margin-left: 0;
 }
 
-.btn-info{
+.btn{
   margin-left: 15px;
+}
+
+label{
+  margin-left: 15px;
+}
+
+.rgst{
+  margin-top: 0px;
 }

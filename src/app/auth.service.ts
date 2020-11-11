@@ -32,5 +32,10 @@ export class AuthService {
     return (loggedIn != null);
   }
 
+  registerUser(newUser): void {
+    this.auth.createUserWithEmailAndPassword(newUser.email, newUser.regPassword);
+    console.log('Wow we created a new user!');
+  }
+
 }
 

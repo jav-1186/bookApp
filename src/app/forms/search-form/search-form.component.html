@@ -37,6 +37,9 @@
         <p class="font-weight-bold" style="text-align: left">Published:
           <span class="font-weight-normal">{{selectedItem.volumeInfo.publishedDate}}</span>
         </p>
+        <div class="text-left">
+          <button class="btn btn-primary" id="libBtn" (click)="addLibrary(selectedItem)"> Add to library</button>
+        </div>
       </div>
     </div>
   </div>

@@ -33,17 +33,6 @@ export class LoginFormComponent implements OnInit {
     // How I plan to create users via email password
     // this.auth.registerUser(this.newUser);
 
-    // some practice at messing around with local storage
-    // let currentRegistration;
-    // if (localStorage.getItem('attemptedRegistration') != null){
-    //   currentRegistration = JSON.parse(localStorage.getItem('attemptedRegistration'));
-    //   currentRegistration = currentRegistration + 1;
-    // }
-    // else{
-    //   currentRegistration = 1;
-    // }
-    // localStorage.setItem('attemptedRegistration', JSON.stringify(currentRegistration));
-
     console.log('Submit occured: ');
     console.log(this.newUser.fullName + ' ' + this.newUser.email + ' ' + this.newUser.regPassword);
   }

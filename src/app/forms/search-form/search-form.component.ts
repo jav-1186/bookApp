@@ -66,6 +66,18 @@ export class SearchFormComponent implements OnInit {
     this.selectedItem = item;
   }
 
+  addLibrary(item): void{
+    let userLibrary;
+    if (localStorage.getItem('personalLibrary') != null){
+      userLibrary = JSON.parse(localStorage.getItem('personalLibrary'));
+    }
+    else{
+      userLibrary = new Array();
+    }
+    userLibrary.push(item);
+    localStorage.setItem('personalLibrary', JSON.stringify(userLibrary));
+  }
+
   private clear(): void{
     this.queryField = '';
     this.queryField2 = '';

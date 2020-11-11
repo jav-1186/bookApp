@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookSearchService } from '../../book-search.service';
+import { LibraryDataService } from '../../services/library-data.service';
 // import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 // import {
 //   FormControl,
@@ -21,7 +22,7 @@ export class SearchFormComponent implements OnInit {
   queryField2;
   queryField3;
   selectedItem;
-  constructor(private booksearchsrevice: BookSearchService) { }
+  constructor(private booksearchsrevice: BookSearchService, public dataService: LibraryDataService) { }
 
   ngOnInit(): void
   {}
@@ -67,15 +68,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   addLibrary(item): void{
-    let userLibrary;
-    if (localStorage.getItem('personalLibrary') != null){
-      userLibrary = JSON.parse(localStorage.getItem('personalLibrary'));
-    }
-    else{
-      userLibrary = new Array();
-    }
-    userLibrary.push(item);
-    localStorage.setItem('personalLibrary', JSON.stringify(userLibrary));
+    this.dataService.addBook(item);
   }
 
   private clear(): void{

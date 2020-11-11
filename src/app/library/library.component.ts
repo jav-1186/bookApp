@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LibraryDataService } from '../services/library-data.service';
 
 @Component({
   selector: 'app-library',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibraryComponent implements OnInit {
 
-  constructor() { }
+  library;
+
+  constructor(public dataService: LibraryDataService) { }
 
   ngOnInit(): void {
+    this.library = this.dataService.getLibrary();
   }
 
 }

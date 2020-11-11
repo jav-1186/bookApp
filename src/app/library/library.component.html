@@ -2,35 +2,23 @@
   <div class="container">
     <h2>Peronsal Library</h2>
     <table class="table table-hover">
+      <caption>Personal library</caption>
       <thead>
         <tr>
           <th>Title</th>
           <th>Author</th>
+          <th>Page Count</th>
+          <th>Published Date</th>
           <th>Date Completed</th>
-          <th>ISBN</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Huckleberry Finn</td>
-          <td>Mark Twain</td>
-          <td>9/24/2020</td>
-          <td>9780486280615</td>
-          <td><button type="button" class="btn btn-info">Update</button></td>
-        </tr>
-        <tr>
-          <td>The Hitchhiker's Guide to the Galaxy</td>
-          <td>Douglas Adams</td>
-          <td>6/15/2019</td>
-          <td>0345391802</td>
-          <td><button type="button" class="btn btn-info">Update</button></td>
-        </tr>
-        <tr>
-          <td>War and Peace</td>
-          <td>Leo Tolstoy</td>
-          <td>--/--/----</td>
-          <td>1400079985</td>
+        <tr *ngFor="let entry of library">
+          <td>{{ entry.book.volumeInfo.title }}</td>
+          <td>{{ entry.book.volumeInfo.authors }}</td>
+          <td class="numData">{{ entry.book.volumeInfo.pageCount }}</td>
+          <td class="numData">{{ entry.book.volumeInfo.publishedDate }}</td>
+          <td class="numData">{{ entry.completeDate }}</td>
           <td><button type="button" class="btn btn-info">Update</button></td>
         </tr>
       </tbody>
@@ -44,36 +32,3 @@
     <app-search-form></app-search-form>
   </div>
 </div>
-
-<!-- OLD ADD TO LIBRARY FORM -->
-<!-- <div class="row" style="margin-top: 30px">
-  <div class="container">
-      <h2>Add to your library</h2>
-      <form class="form-inline" action=#>
-          <div class="form-group">
-              <label for="ISBN" style="margin-right: 15px">ISBN:</label>
-              <input type="ISBN" class="form-control" id="ISBN" placeholder="Enter ISBN" name="ISBN">
-          </div>
-          <button type="submit" class="btn btn-success" style="margin-left: 15px">Submit</button>
-      </form>
-  </div>
-
-</div>
-
-<div class="container" style="margin-top: 15px">
-  <form class="form-inline" action=#>
-      <div class="form-group">
-          <label for="bookTitle" style="margin-right: 15px">Title:</label>
-          <input type="bookTitle" class="form-control" id="bookTitle" placeholder="Enter title" name="bookTitle">
-      </div>
-      <div class="form-group">
-          <label for="bookAuthor" style="margin-right: 15px; margin-left: 15px">Author:</label>
-          <input type="bookAuthor" class="form-control" id="bookAuthor" placeholder="Enter author" name="bookAuthor">
-      </div>
-      <div class="form-group">
-          <label for="bookComplete" style="margin-right: 15px; margin-left: 15px">Date Completed:</label>
-          <input type="bookComplete" class="form-control" id="bookComplete" placeholder="mm/dd/yyyy" name="bookComplete">
-      </div>
-      <button type="submit" class="btn btn-success" style="margin-left: 15px">Submit</button>
-  </form>
-</div> -->

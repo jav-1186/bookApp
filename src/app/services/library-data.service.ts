@@ -7,19 +7,21 @@ export class LibraryDataService {
 
   constructor() { }
 
-  public getLibrary(): Array<{dateCompleted, book}>{
+  public getLibrary(): Array<{completeDate, book}>{
     return ((localStorage.getItem('personalLibrary') != null) ? JSON.parse(localStorage.getItem('personalLibrary')) : null);
   }
 
-  public addBook(book): void{
+  public addBook(item): void{
     let userLibrary;
+    let libEntry;
     if (localStorage.getItem('personalLibrary') != null){
       userLibrary = JSON.parse(localStorage.getItem('personalLibrary'));
     }
     else{
       userLibrary = new Array();
     }
-    userLibrary.push(book);
+    libEntry = { completeDate: '--/--/----', book: item};
+    userLibrary.push(libEntry);
     localStorage.setItem('personalLibrary', JSON.stringify(userLibrary));
   }
 }

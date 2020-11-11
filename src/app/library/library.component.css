@@ -2,3 +2,11 @@ h1{
   text-align: center;
   text-decoration: underline;
 }
+
+th{
+  text-align: center;
+}
+
+.numData{
+  text-align: center;
+}

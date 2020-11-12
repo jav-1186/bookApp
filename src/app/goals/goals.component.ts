@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import { $ } from 'protractor';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-goals',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalsComponent implements OnInit {
 
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+
+
+
+
+
+
   }
+
 
 }

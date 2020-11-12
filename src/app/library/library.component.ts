@@ -14,6 +14,7 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     this.library = this.dataService.getLibrary();
+    console.log(this.library);
   }
 
 }

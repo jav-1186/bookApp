@@ -3,7 +3,6 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <br> <br>
         <h4 class="modal-title w-100 font-weight-bold">Success!</h4>
         <img src="assets/images/success-green-check-mark.png" class="img-fluid" alt="success-green-check-mark">
       </div>
@@ -11,46 +10,48 @@
   </div>
 </div>
 
+<div class="row" style="margin-top: 30px">
+<div class="col-sm-4" style="margin-left: 30px">
 <div class="container" style="margin-top: 30px;">
   <h2 class="text-center">
       Set New Goal
   </h2>
-  <form class="form-group" action="/action_page.php" class="was-validated">
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-group">
 
     <p>
       <label>Set desired start date for new reading goal.</label>
-      <input class="form-control" type="date"></p>
+      <input class="form-control" [(ngModel)]='queryField' name="queryField" type="date"></p>
 
     <p>
           <label>Set desired completion date for new reading goal</label>
-          <input class="form-control" type="date"></p>
+          <input class="form-control" [(ngModel)]='queryField2' name="queryField2" type="date"></p>
 
           <p><label>How many books do you plan to read? &nbsp; </label>
-          <input type="number" id="numTravelers" min="1" max="52"></p>
+          <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="number" min="1" max="52"></p>
 
       <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#modalSubscriptionForm">Set Goal</button>
   </form>
 </div>
-
-<div class="container" style="margin-top: 30px;">
-  <h2 class="text-center">
-      Current Goal
-  </h2>
-  <form class="form-group" action="/action_page.php" class="was-validated">
-      <p> Read 20 books starting 01/01/2020 and ending 12/31/2020
-          </p>
-      <div class="progress-bar" style="width:70%">70%</div>
-  </form>
 </div>
 
+<div class="col-sm-5" style="margin-left: 150px">
 <div class="container" style="margin-top: 30px;">
   <h2 class="text-center">
-      Past Goal
+      Goals
   </h2>
-  <form class="form-group" action="/action_page.php" class="was-validated">
-      <p> Read 12 books starting 01/01/2019 and ending 12/31/2019
-          </p>
-      <div class="progress-bar" style="width:100%">100%</div>
-  </form>
+<table class="table table-hover">
+    <tr class="success">
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount of Books</th>
+    </tr>
+    <tr class="success">
+      <td>{{ this.queryField}}</td>
+      <td>{{ this.queryField2 }}</td>
+      <td>{{ this.queryField3 }}</td>
+    </tr>
+  </table>
+</div>
+</div>
 </div>
 <!--test 2-->

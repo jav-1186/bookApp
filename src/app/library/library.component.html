@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 30px">
+<div class="row base">
   <div class="container">
     <h2>Peronsal Library</h2>
     <table class="table table-hover">
@@ -17,19 +17,13 @@
           <td>{{ entry.book.volumeInfo.authors }}</td>
           <td class="numData">{{ entry.book.volumeInfo.pageCount }}</td>
           <td class="numData">{{ entry.book.volumeInfo.publishedDate }}</td>
-          <td class="numData">{{ entry.book.completeDate }}</td>
+          <td class="numData">{{ entry.completeDate }}</td>
           <td><button type="button" class="btn btn-info">Update</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<div>
-  <div class="container">
-    <app-search-form></app-search-form>
-  </div>
+<div class="container base">
+  <app-search-form></app-search-form>
 </div>

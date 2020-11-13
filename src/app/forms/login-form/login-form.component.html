@@ -20,7 +20,7 @@
           Register
         </button>
       </div>
-      <div class="row" style="margin-top: 10px">
+      <div class="row">
         <button class="btn btn-info" (click)="login()">Login with Google</button>
       </div>
     </div>
@@ -44,7 +44,7 @@
           <form #searchForm="ngForm" (ngSubmit)="onRegisterSubmit()" class="form-group">
             <label>Full Name</label>
             <input class="form-control rgst" [(ngModel)]='newUser.fullName' name="fullName" type="text"
-              style="margin-top: 0px;" placeholder="Enter full name">
+              placeholder="Enter full name">
             <label>Email</label>
             <input class="form-control rgst" [(ngModel)]='newUser.userName' name="userName" type="text"
               placeholder="Enter email">

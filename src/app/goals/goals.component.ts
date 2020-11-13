@@ -14,42 +14,47 @@ export class GoalsComponent implements OnInit {
 
   key = 'items';
   items;
-  queryField;
-  queryField2;
-  queryField3;
+  queryField : Date;
+  queryField2 : Date;
+  queryField3 : number;
   goals;
 
   constructor() { }
 
   ngOnInit(): void
-  {}
+  {this.goals = this.getGoals();}
 
   onSubmit(): void{
 
-
-
-      console.log(this.queryField);
-      console.log(this.queryField2);
-      console.log(this.queryField3);
-      this.addGoal(this.queryField);
-      this.addGoal(this.queryField2);
-      this.addGoal(this.queryField3);
-      this.goals = new Array;
+      this.addGoal(this.queryField, this.queryField2, this.queryField3);
+      this.goals = this.getGoals();
  }
 
- public addGoal(item): void{
+ public addGoal(startDate: Date, endDate: Date, amount: number): void
+ {
+  let goalLibrary;
+  let goalEntry;
+  if (localStorage.getItem('goalLibrary') != null){
+    goalLibrary = JSON.parse(localStorage.getItem('goalLibrary'));
+  }
+  else{
+    goalLibrary = new Array();
+  }
+  goalEntry = { startDate: startDate, endDate: endDate, amount: amount};
+  goalLibrary.push(goalEntry);
+  localStorage.setItem('goalLibrary', JSON.stringify(goalLibrary));
+  console.log(goalEntry);
+  console.log(startDate);
+  console.log(endDate);
+  console.log(amount);
 
+}
 
-  this.goals.push(item);
-
+public getGoals(): Array<{startDate, endDate, amount}>{
+  return ((localStorage.getItem('goalLibrary') != null) ? JSON.parse(localStorage.getItem('goalLibrary')) : null);
 }
 
 
 
 
- private clear(): void{
-  this.queryField = '';
-  this.queryField2 = '';
-  this.queryField3 = '';
-}
 }

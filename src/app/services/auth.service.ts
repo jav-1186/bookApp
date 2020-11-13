@@ -22,6 +22,11 @@ export class AuthService {
       });
   }
 
+  basicLogin(user): void{
+    this.auth.signInWithEmailAndPassword(user.userName, user.password)
+    .then(function(result) {sessionStorage.setItem('loggedIn', '1')});
+  }
+
   logout() {
     this.auth.signOut()
       .then(function(result) { sessionStorage.removeItem('loggedIn'); });
@@ -33,7 +38,7 @@ export class AuthService {
   }
 
   registerUser(newUser): void {
-    this.auth.createUserWithEmailAndPassword(newUser.email, newUser.regPassword);
+    this.auth.createUserWithEmailAndPassword(newUser.userName, newUser.password);
     console.log('Wow we created a new user!');
   }
 

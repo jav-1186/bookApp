@@ -8,32 +8,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  user: {userName, password} = {userName: '', password: ''};
-  newUser: {fullName, email, regPassword} = {fullName: '', email: '', regPassword: ''};
+  user: { userName, password } = { userName: '', password: '' };
+  newUser: { fullName, userName, password } = { fullName: '', userName: '', password: '' };
 
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  loginAttempt(): void{
-    console.log(this.user);
-    this.user = {userName: '', password: ''};
+  loginAttempt(): void {
+    this.basicLogin(this.user);
   }
 
-  login(): void{
+  login(): void {
     this.auth.login();
   }
 
-  logout(): void{
+  logout(): void {
     this.auth.logout();
   }
 
-  onRegisterSubmit(): void{
-    // How I plan to create users via email password
-    // this.auth.registerUser(this.newUser);
+  onRegisterSubmit(): void {
+    this.auth.registerUser(this.newUser);
+    this.basicLogin(this.newUser);
+  }
 
-    console.log('Submit occured: ');
-    console.log(this.newUser.fullName + ' ' + this.newUser.email + ' ' + this.newUser.regPassword);
+  private clear(): void {
+    this.user = { userName: '', password: '' };
+    this.newUser = { fullName: '', userName: '', password: '' };
+  }
+
+  private basicLogin(basicUser): void{
+    this.auth.basicLogin(basicUser);
+    this.clear();
   }
 }

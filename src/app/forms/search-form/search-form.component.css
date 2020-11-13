@@ -2,11 +2,24 @@
   margin-top: 15px;
 }
 
-#libBtn{
-  margin-bottom: 15px;
-}
-
 .card-block{
   margin-left: 15px;
   margin-right: 15px;
+}
+
+.num{
+  text-align: left;
+}
+
+.grp{
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.grp2{
+  margin-top: 10px;
+}
+
+#libBtn{
+  margin-bottom: 15px;
 }

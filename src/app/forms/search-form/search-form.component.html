@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-sm-5" style="margin-left: 30px;">
+  <div class="col-sm-5 grp">
     <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-group">
       <label>Search by title</label>
       <input class="form-control" [(ngModel)]='queryField' name="queryField" type="text" placeholder="Enter title">
@@ -23,18 +23,18 @@
       <div class="card-header">
         <h4>{{selectedItem.volumeInfo.title + ' by ' + selectedItem.volumeInfo.authors}}</h4>
       </div>
-      <div class="card-block" style="margin-top: 10px;">
-        <p class="font-weight-bold" style="text-align: left">Summary:<br>
+      <div class="card-block grp2">
+        <p class="font-weight-bold num">Summary:<br>
           <span class="font-weight-normal" *ngIf="selectedItem.searchInfo">{{selectedItem.searchInfo.textSnippet}}</span>
           <span class="font-weight-normal" *ngIf="!selectedItem.searchInfo">N/A</span>
         </p>
-        <p class="font-weight-bold" style="text-align: left">Genre:
+        <p class="font-weight-bold num">Genre:
           <span class="font-weight-normal">{{selectedItem.volumeInfo.categories}}</span>
         </p>
-        <p class="font-weight-bold" style="text-align: left">Page count:
+        <p class="font-weight-bold num">Page count:
           <span class="font-weight-normal">{{selectedItem.volumeInfo.pageCount}}</span>
         </p>
-        <p class="font-weight-bold" style="text-align: left">Published:
+        <p class="font-weight-bold num">Published:
           <span class="font-weight-normal">{{selectedItem.volumeInfo.publishedDate}}</span>
         </p>
         <div class="text-left">
@@ -45,7 +45,7 @@
   </div>
 
 
-  <div class="col-sm-4" style="margin-left: 30px; margin-bottom: 30px;">
+  <div class="col-sm-4 grp">
     <h2>Search Results</h2>
     <div *ngFor="let item of items">
       <h4>Title: {{item?.volumeInfo.title}}</h4>

@@ -37,15 +37,23 @@
       </div>
 
       <div class="modal-body">
-        <form #searchForm="ngForm" (ngSubmit)="onRegisterSubmit()" class="form-group">
-          <label>Full Name</label>
-          <input class="form-control rgst" [(ngModel)]='newUser.fullName' name="fullName" type="text" style="margin-top: 0px;" placeholder="Enter full name">
-          <label>Email</label>
-          <input class="form-control rgst" [(ngModel)]='newUser.userName' name="userName" type="text" placeholder="Enter email">
-          <label>Password</label>
-          <input class="form-control rgst" [(ngModel)]='newUser.password' name="password" type="text" placeholder="Enter password">
-          <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+        <div *ngIf="loggedIn; else showRegister">
+          <h1>You are logged in</h1>
+        </div>
+        <ng-template #showRegister>
+          <form #searchForm="ngForm" (ngSubmit)="onRegisterSubmit()" class="form-group">
+            <label>Full Name</label>
+            <input class="form-control rgst" [(ngModel)]='newUser.fullName' name="fullName" type="text"
+              style="margin-top: 0px;" placeholder="Enter full name">
+            <label>Email</label>
+            <input class="form-control rgst" [(ngModel)]='newUser.userName' name="userName" type="text"
+              placeholder="Enter email">
+            <label>Password</label>
+            <input class="form-control rgst" [(ngModel)]='newUser.password' name="password" type="text"
+              placeholder="Enter password">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </ng-template>
       </div>
 
       <div class="modal-footer">

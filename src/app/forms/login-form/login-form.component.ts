@@ -1,5 +1,5 @@
 import { AuthService } from '../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -10,27 +10,32 @@ export class LoginFormComponent implements OnInit {
 
   user: { userName, password } = { userName: '', password: '' };
   newUser: { fullName, userName, password } = { fullName: '', userName: '', password: '' };
+  loggedIn = false;
 
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
+
   loginAttempt(): void {
     this.basicLogin(this.user);
+    console.log('Service value: ' + this.auth.isLoggedIn());
   }
 
   login(): void {
     this.auth.login();
+    console.log('Service value: ' + this.auth.isLoggedIn());
   }
 
   logout(): void {
     this.auth.logout();
+    this.loggedIn = false;
   }
 
   onRegisterSubmit(): void {
-    this.auth.registerUser(this.newUser);
-    this.basicLogin(this.newUser);
+    this.loggedIn = this.auth.registerUser(this.newUser);
+    this.clear();
   }
 
   private clear(): void {

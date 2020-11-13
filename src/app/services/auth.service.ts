@@ -4,9 +4,8 @@ import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class AuthService {
   user: Observable<firebase.User>;
 
@@ -14,33 +13,49 @@ export class AuthService {
     this.user = auth.authState;
   }
 
-
   login() {
     this.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(function(result) {sessionStorage.setItem('loggedIn', '1');
+      .then(function (result) {
+        sessionStorage.setItem('loggedIn', '1');
       });
   }
 
-  basicLogin(user): void{
-    this.auth.signInWithEmailAndPassword(user.userName, user.password)
-    .then(function(result) {sessionStorage.setItem('loggedIn', '1')});
+  basicLogin(user): void {
+    this.auth
+      .signInWithEmailAndPassword(user.userName, user.password)
+      .catch((ex) => {
+        console.log(ex.code);
+      })
+      .then(function (result) {
+        sessionStorage.setItem('loggedIn', '1');
+      });
   }
 
   logout() {
-    this.auth.signOut()
-      .then(function(result) { sessionStorage.removeItem('loggedIn'); });
+    this.auth.signOut().then(function (result) {
+      sessionStorage.removeItem('loggedIn');
+    });
   }
 
   isLoggedIn(): boolean {
-    var loggedIn = sessionStorage.getItem('loggedIn');
-    return (loggedIn != null);
+    let loggedIn = sessionStorage.getItem('loggedIn');
+    console.log('Logged in value: ' + loggedIn);
+    console.log('Session storage value: ' + sessionStorage.getItem('loggedIn'));
+    console.log('Compare results: ' + (loggedIn != null));
+    return loggedIn != null;
   }
 
-  registerUser(newUser): void {
-    this.auth.createUserWithEmailAndPassword(newUser.userName, newUser.password);
-    console.log('Wow we created a new user!');
+  registerUser(newUser): boolean {
+    this.auth
+      .createUserWithEmailAndPassword(newUser.userName, newUser.password)
+      .catch((ex) => {
+        console.log(ex.code);
+        return false;
+      })
+      .then(function (result) {
+        sessionStorage.setItem('loggedIn', '1');
+      });
+    return true;
   }
-
 }
-

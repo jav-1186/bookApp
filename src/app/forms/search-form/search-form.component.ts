@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookSearchService } from '../../services/book-search.service';
 import { LibraryDataService } from '../../services/library-data.service';
+import { FirestoreDataService } from '../../services/firestore-data.service';
 // import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 // import {
 //   FormControl,
@@ -22,7 +23,7 @@ export class SearchFormComponent implements OnInit {
   queryField2;
   queryField3;
   selectedItem;
-  constructor(private booksearchsrevice: BookSearchService, public dataService: LibraryDataService) { }
+  constructor(private booksearchsrevice: BookSearchService, public dataService: FirestoreDataService) { }
 
   ngOnInit(): void
   {}
@@ -68,7 +69,8 @@ export class SearchFormComponent implements OnInit {
   }
 
   addLibrary(item): void{
-    this.dataService.addBook(item);
+    // this.dataService.addBook(item);
+    this.dataService.post(item);
   }
 
   private clear(): void{

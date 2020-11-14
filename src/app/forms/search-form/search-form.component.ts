@@ -70,7 +70,8 @@ export class SearchFormComponent implements OnInit {
 
   addLibrary(item): void{
     // this.dataService.addBook(item);
-    this.dataService.post(item);
+    const libEntry = {type: 'libEntry', book: item};
+    this.dataService.post(libEntry);
   }
 
   private clear(): void{

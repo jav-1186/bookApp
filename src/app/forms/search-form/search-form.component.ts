@@ -17,12 +17,14 @@ import { FirestoreDataService } from '../../services/firestore-data.service';
 })
 
 export class SearchFormComponent implements OnInit {
+
   key = 'items';
   items;
   queryField;
   queryField2;
   queryField3;
   selectedItem;
+
   constructor(private booksearchsrevice: BookSearchService, public dataService: FirestoreDataService) { }
 
   ngOnInit(): void
@@ -69,9 +71,9 @@ export class SearchFormComponent implements OnInit {
   }
 
   addLibrary(item): void{
-    // this.dataService.addBook(item);
     const libEntry = {type: 'libEntry', book: item};
-    this.dataService.post(libEntry);
+    const libraryPost = this.dataService.post(libEntry);
+    console.log('Library post status: ', libraryPost);
   }
 
   private clear(): void{

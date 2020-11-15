@@ -20,12 +20,10 @@ export class LoginFormComponent implements OnInit {
 
   loginAttempt(): void {
     this.basicLogin(this.user);
-    console.log('Service value: ' + this.auth.isLoggedIn());
   }
 
   login(): void {
     this.auth.login();
-    console.log('Service value: ' + this.auth.isLoggedIn());
   }
 
   logout(): void {
@@ -46,5 +44,9 @@ export class LoginFormComponent implements OnInit {
   private basicLogin(basicUser): void{
     this.auth.basicLogin(basicUser);
     this.clear();
+  }
+
+  consoleTest(): void{
+    console.log('Current user ID: ', this.auth.currentUserId);
   }
 }

@@ -4,13 +4,40 @@ import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   user: Observable<firebase.User>;
+  authState: any = null;
 
   constructor(private auth: AngularFireAuth) {
     this.user = auth.authState;
+    this.auth.authState.subscribe((authState) => {
+      this.authState = authState;
+    });
+  }
+
+  get isAuthenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  get currentUserId(): string {
+    return this.isAuthenticated ? this.authState.uid : null;
+  }
+
+  get userData(): any {
+    if (!this.isAuthenticated) {
+      return [];
+    }
+    return [
+      {
+        id: this.authState.uid,
+        displayName: this.authState.displayName,
+        email: this.authState.email,
+        phoneNumber: this.authState.phoneNumber,
+        photoURL: this.authState.photoURL,
+      },
+    ];
   }
 
   login() {

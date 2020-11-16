@@ -9,18 +9,19 @@ export class FirestoreDataService {
   dataTypes: Array<string> = ['libEntry', 'goalEntry'];
 
   constructor(private db: AngularFirestore) {
-    const things = db.collection('libEntry').valueChanges();
-    things.subscribe(console.log);
+    // const things = db.collection('libEntry').valueChanges();
+    // things.subscribe(console.log);
   }
 
   public post(object): boolean {
-    if (object.type) {
-      this.db.collection(object.type)
+    if (object.type && object.userId) {
+      const collectionId = object.userId + '_' + object.type;
+      this.db.collection(collectionId)
         .add(object)
-        .then(function (docRef) {
+        .then((docRef) => {
           console.log('Document written with ID: ', docRef.id);
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.error('Error adding document: ', error);
           return false;
         });

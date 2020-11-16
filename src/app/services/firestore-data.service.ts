@@ -5,7 +5,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class FirestoreDataService {
-
   dataTypes: Array<string> = ['libEntry', 'goalEntry'];
 
   constructor(private db: AngularFirestore) {
@@ -15,8 +14,9 @@ export class FirestoreDataService {
 
   public post(object): boolean {
     if (object.type && object.userId) {
-      const collectionId = object.userId + '_' + object.type;
-      this.db.collection(collectionId)
+      const collectionId = this.getId(object);
+      this.db
+        .collection(collectionId)
         .add(object)
         .then((docRef) => {
           console.log('Document written with ID: ', docRef.id);
@@ -27,5 +27,10 @@ export class FirestoreDataService {
         });
     }
     return true;
+  }
+
+  public getId(object): string {
+    const collectionId = object.userId + '_' + object.type;
+    return collectionId;
   }
 }

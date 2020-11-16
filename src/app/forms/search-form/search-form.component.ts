@@ -26,6 +26,7 @@ export class SearchFormComponent implements OnInit {
   onSubmit(): void{
      this.booksearchsrevice.get(this.queryField).subscribe((data) => {
        this.items = data[this.key];
+       console.log(data);
      });
      this.clear();
   }
@@ -33,6 +34,7 @@ export class SearchFormComponent implements OnInit {
   onSubmitSubject(): void{
     this.booksearchsrevice.getSubject(this.queryField3).subscribe((data) => {
       this.items = data[this.key];
+      console.log(data);
       this.clear();
     });
  }
@@ -40,6 +42,7 @@ export class SearchFormComponent implements OnInit {
   onSubmitISBN(): void{
      this.booksearchsrevice.getIsbn(this.queryField2).subscribe((data) => {
        this.items = data[this.key];
+       console.log(data);
        this.clear();
      });
   }

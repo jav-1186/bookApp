@@ -12,12 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let entry of library">
-          <td>{{ entry.book.volumeInfo.title }}</td>
-          <td>{{ entry.book.volumeInfo.authors }}</td>
-          <td class="numData">{{ entry.book.volumeInfo.pageCount }}</td>
-          <td class="numData">{{ entry.book.volumeInfo.publishedDate }}</td>
-          <td class="numData">{{ entry.completeDate }}</td>
+        <tr *ngFor="let item of items | async">
+          <!-- <li>{{ item.userId + ' ' + item.type }}</li> -->
+          <td>{{ item.book.volumeInfo.title }}</td>
+          <td>{{ item.book.volumeInfo.authors }}</td>
+          <td class="numData">{{ item.book.volumeInfo.pageCount }}</td>
+          <td class="numData">{{ item.book.volumeInfo.publishedDate }}</td>
+          <td class="numData">{{ item.book.volumeInfo.completeDate ? item.book.volumeInfo.completeDate : '--/--/----' }}</td>
           <td><button type="button" class="btn btn-info">Update</button></td>
         </tr>
       </tbody>

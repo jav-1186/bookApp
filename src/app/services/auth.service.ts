@@ -40,37 +40,29 @@ export class AuthService {
     ];
   }
 
-  login() {
+  public login(): void {
     this.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(function (result) {
+      .then((result) => {
         sessionStorage.setItem('loggedIn', '1');
       });
   }
 
-  basicLogin(user): void {
+  public basicLogin(user): void {
     this.auth
       .signInWithEmailAndPassword(user.userName, user.password)
       .catch((ex) => {
         console.log(ex.code);
       })
-      .then(function (result) {
+      .then((result) => {
         sessionStorage.setItem('loggedIn', '1');
       });
   }
 
-  logout() {
-    this.auth.signOut().then(function (result) {
+  public logout(): void{
+    this.auth.signOut().then((result) => {
       sessionStorage.removeItem('loggedIn');
     });
-  }
-
-  isLoggedIn(): boolean {
-    let loggedIn = sessionStorage.getItem('loggedIn');
-    console.log('Logged in value: ' + loggedIn);
-    console.log('Session storage value: ' + sessionStorage.getItem('loggedIn'));
-    console.log('Compare results: ' + (loggedIn != null));
-    return loggedIn != null;
   }
 
   registerUser(newUser): boolean {
@@ -80,7 +72,7 @@ export class AuthService {
         console.log(ex.code);
         return false;
       })
-      .then(function (result) {
+      .then((result) => {
         sessionStorage.setItem('loggedIn', '1');
       });
     return true;

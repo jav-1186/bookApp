@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class FirestoreDataService {
   dataTypes: Array<string> = ['libEntry', 'goalEntry'];
 
@@ -34,9 +32,5 @@ export class FirestoreDataService {
   public getId(object): string {
     const collectionId = object.userId + '_' + object.type;
     return collectionId;
-  }
-
-  public getCollection(request): Observable<any[]>{
-    return this.db.collection(this.getId(request)).valueChanges();
   }
 }

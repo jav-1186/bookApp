@@ -33,7 +33,7 @@ jobs:
       - run: ng build --prod --output-path=dist --base-href="https://jav-1186.github.io/bookApp/"
 
       - name: Publish generated content to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           FOLDER : dist
           branch: gh-pages

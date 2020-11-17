@@ -1,30 +1,39 @@
-<div class="row base">
-  <div class="container">
-    <h2>Peronsal Library</h2>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Page Count</th>
-          <th>Published Date</th>
-          <th>Date Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items | async">
-          <!-- <li>{{ item.userId + ' ' + item.type }}</li> -->
-          <td>{{ item.book.volumeInfo.title }}</td>
-          <td>{{ item.book.volumeInfo.authors }}</td>
-          <td class="numData">{{ item.book.volumeInfo.pageCount }}</td>
-          <td class="numData">{{ item.book.volumeInfo.publishedDate }}</td>
-          <td class="numData">{{ item.book.volumeInfo.completeDate ? item.book.volumeInfo.completeDate : '--/--/----' }}</td>
-          <td><button type="button" class="btn btn-info">Update</button></td>
-        </tr>
-      </tbody>
-    </table>
+<div *ngIf='auth.isAuthenticated; else basicUser'>
+
+  <div class="row base">
+    <div class="container">
+      <h2>Peronsal Library</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Page Count</th>
+            <th>Published Date</th>
+            <th>Date Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items | async">
+            <td>{{ item.book.volumeInfo.title }}</td>
+            <td>{{ item.book.volumeInfo.authors }}</td>
+            <td class="numData">{{ item.book.volumeInfo.pageCount }}</td>
+            <td class="numData">{{ item.book.volumeInfo.publishedDate }}</td>
+            <td class="numData">
+              {{ item.book.volumeInfo.completeDate ? item.book.volumeInfo.completeDate : '--/--/----' }}</td>
+            <td><button type="button" class="btn btn-info">Update</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <div class="container base">
+    <app-search-form></app-search-form>
+  </div>
+
 </div>
-<div class="container base">
-  <app-search-form></app-search-form>
-</div>
+
+<ng-template #basicUser>
+  <h2>To access the library you must <a routerLink="/home">login</a></h2>
+</ng-template>

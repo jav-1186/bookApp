@@ -6,6 +6,7 @@ h1{
 .jumbotron{
   margin-bottom: 0;
   background-image: url(/assets/images/library.jpg);
+  /* // */
 }
 
 .nav-link{

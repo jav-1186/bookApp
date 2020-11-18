@@ -1,7 +1,6 @@
 <div class="container">
   <div *ngIf="auth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }} !</h1>
-    <!-- <button class="btn btn-info" (click)="consoleTest()">Console</button> -->
     <button type="button" class="btn btn-info" (click)="logout()">Logout</button>
   </div>
 
@@ -16,13 +15,13 @@
           placeholder="Enter Password">
       </form>
       <div class="row">
-        <button class="btn btn-info" (click)="loginAttempt()">Login</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        <button class="btn btn-info grp" (click)="loginAttempt()">Login</button>
+        <button type="button" class="btn btn-info grp" data-toggle="modal" data-target="#myModal">
           Register
         </button>
       </div>
       <div class="row">
-        <button class="btn btn-info" (click)="login()">Login with Google</button>
+        <button class="btn btn-info grp" (click)="login()">Login with Google</button>
       </div>
     </div>
   </ng-template>

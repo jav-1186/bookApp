@@ -38,7 +38,7 @@
           <span class="font-weight-normal">{{selectedItem.volumeInfo.publishedDate}}</span>
         </p>
         <div class="text-left">
-          <button class="btn btn-primary" id="libBtn" (click)="addLibrary(selectedItem)"> Add to library</button>
+          <button *ngIf="auth.isAuthenticated" class="btn btn-primary" id="libBtn" (click)="addLibrary(selectedItem)"> Add to library</button>
         </div>
       </div>
     </div>

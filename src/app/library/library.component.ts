@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LibraryDataService } from '../services/library-data.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { FirestoreDataService } from '../services/firestore-data.service';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
+interface Item{
+  userId: string;
+  type: string;
+  book: any;
+}
 
 @Component({
   selector: 'app-library',
@@ -10,14 +16,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class LibraryComponent implements OnInit {
 
+  items: Observable<Item[]>;
   library;
 
-  // constructor(public dataService: AngularFirestore) { }
-  constructor() { }
+  constructor(public db: FirestoreDataService, public auth: AuthService) { }
 
   ngOnInit(): void {
-    // this.library = this.dataService.getLibrary();
-    // console.log(this.library);
+    this.items = this.db.getCollection({userId: this.auth.currentUserId, type: 'libEntry'});
   }
-
 }

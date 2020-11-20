@@ -17,6 +17,7 @@ export class SearchFormComponent implements OnInit {
   queryField2;
   queryField3;
   selectedItem;
+  defaultDate = '--/--/----';
 
   constructor(private booksearchsrevice: BookSearchService, public dataService: FirestoreDataService, public auth: AuthService) { }
 
@@ -52,7 +53,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   addLibrary(item): void{
-    const libEntry = {userId: this.auth.currentUserId, type: 'libEntry', book: item};
+    const libEntry = {userId: this.auth.currentUserId, type: 'libEntry', completeDate: this.defaultDate, book: item};
     const libraryPost = this.dataService.post(libEntry);
     console.log('Library post status: ', libraryPost);
   }

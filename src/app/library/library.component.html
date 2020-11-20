@@ -19,8 +19,7 @@
             <td>{{ item.book.volumeInfo.authors }}</td>
             <td class="numData">{{ item.book.volumeInfo.pageCount }}</td>
             <td class="numData">{{ item.book.volumeInfo.publishedDate }}</td>
-            <td class="numData">
-              {{ item.book.volumeInfo.completeDate ? item.book.volumeInfo.completeDate : '--/--/----' }}</td>
+            <td class="numData">{{ item.completeDate }}</td>
             <td><button type="button" class="btn btn-info">Update</button></td>
           </tr>
         </tbody>

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 interface Item{
   userId: string;
   type: string;
+  completeDate: string;
   book: any;
 }
 

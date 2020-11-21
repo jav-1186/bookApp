@@ -20,7 +20,8 @@
             <td class="numData">{{ item.book.volumeInfo.pageCount }}</td>
             <td class="numData">{{ item.book.volumeInfo.publishedDate }}</td>
             <td class="numData">{{ item.completeDate }}</td>
-            <td><button type="button" class="btn btn-info">Update</button></td>
+            <td><button type="button" (click)="selectEntry(item)" class="btn btn-info" data-toggle="modal"
+                data-target="#updateModal">Update</button></td>
           </tr>
         </tbody>
       </table>
@@ -35,4 +36,39 @@
 
 <ng-template #basicUser>
   <h2>To access the library you must <a routerLink="/home">login</a></h2>
+</ng-template>
+
+<div class="modal" id="updateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Update entry</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+
+        <div *ngIf="!updateStatus; else showUpdate">
+          <form #searchForm="ngForm" (ngSubmit)="updateEntry()" class="form-group">
+            <label>Complete Date</label>
+            <input [(ngModel)]="updateComplete" type="date" name="date" class="form-control" id="date" max="3000-12-31"
+              min="1000-01-01">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #showUpdate>
+  Library entry updated
 </ng-template>

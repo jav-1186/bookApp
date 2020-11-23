@@ -59,7 +59,7 @@ export class LibraryComponent implements OnInit {
 
   updateEntry(): void{
     this.selectedEntry.completeDate = this.transformDate(this.updateComplete);
-    this.updateStatus = this.db.postBook(this.selectedEntry);
+    this.updateStatus = this.db.post(this.selectedEntry);
   }
 
   transformDate(date): string{

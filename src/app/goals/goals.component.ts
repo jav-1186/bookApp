@@ -5,10 +5,13 @@ import { $ } from 'protractor';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
 import { FirestoreDataService } from '../services/firestore-data.service';
 
-interface Item{
+interface Item {
   userId: string;
   type: string;
   goal: any;
@@ -23,44 +26,55 @@ interface Goal {
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
-  styleUrls: ['./goals.component.css']
+  styleUrls: ['./goals.component.css'],
 })
-
 export class GoalsComponent implements OnInit {
-
   key = 'items';
   ref: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
-  queryField: Date;
-  queryField2: Date;
-  queryField3: number;
+  startDate: Date;
+  endDate: Date;
+  bookNum: number;
   updateStatus = false;
   goals: any;
   userId: string;
-  collectionId: {userId: string, type: string};
+  collectionId: { userId: string; type: string };
   selectedEntry: Item;
 
-  constructor(private af: AngularFirestore, private auth: AuthService, public dataService: FirestoreDataService  ) {  }
-
-  addGoal(startDate: Date, endDate: Date, amount: number): void
-  {
-   const goalEntry = {userId: this.auth.currentUserId, type: 'goalEntry', goal: {startDate, endDate, amount} };
-   const goalPost = this.dataService.postGoal(goalEntry);
-   console.log('Goal post status: ', goalPost);
- }
+  constructor(
+    private af: AngularFirestore,
+    private auth: AuthService,
+    public dataService: FirestoreDataService
+  ) {}
 
   ngOnInit(): void {
     this.goals = this.getAllGoals();
   }
 
-  onSubmit(): void{
-    this.addGoal(this.queryField, this.queryField2, this.queryField3);
+  addGoal(): void {
+    const createdId = this.auth.currentUserId + '_' + this.startDate + this.endDate + this.bookNum;
+    console.log('Created book id: ', createdId);
+    const goalEntry = {
+      userId: this.auth.currentUserId,
+      type: 'goalEntry',
+      goal: {
+        startDate: this.startDate,
+        endDate: this.endDate,
+        amount: this.bookNum,
+        id: createdId
+      },
+    };
+    const goalPost = this.dataService.post(goalEntry);
+    console.log('Goal post status: ', goalPost);
+  }
+
+  onSubmit(): void {
+    this.addGoal();
     this.goals = this.getAllGoals();
- }
+  }
 
   getAllGoals(): void {
-    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
+    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry' };
     this.items = this.dataService.getCollection(collectionId);
-}
-
+  }
 }

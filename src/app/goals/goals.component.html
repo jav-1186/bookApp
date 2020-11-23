@@ -20,14 +20,14 @@
 
     <p>
       <label>Set desired start date.</label>
-      <input class="form-control" [(ngModel)]='queryField' name="queryField" type="date"></p>
+      <input class="form-control" [(ngModel)]='startDate' name="startDate" type="date"></p>
 
     <p>
           <label>Set desired completion date.</label>
-          <input class="form-control" [(ngModel)]='queryField2' name="queryField2" type="date"></p>
+          <input class="form-control" [(ngModel)]='endDate' name="endDate" type="date"></p>
 
           <p><label>How many books do you plan to read? &nbsp; </label>
-          <input class="form-control" [(ngModel)]='queryField3' name="queryField3" type="number" min="1" max="52"></p>
+          <input class="form-control" [(ngModel)]='bookNum' name="bookNum" type="number" min="1" max="52"></p>
 
       <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#modalSubscriptionForm">Set Goal</button>
   </form>

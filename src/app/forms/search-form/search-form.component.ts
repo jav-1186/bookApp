@@ -54,7 +54,7 @@ export class SearchFormComponent implements OnInit {
 
   addLibrary(item): void{
     const libEntry = {userId: this.auth.currentUserId, type: 'libEntry', completeDate: this.defaultDate, book: item};
-    const libraryPost = this.dataService.postBook(libEntry);
+    const libraryPost = this.dataService.post(libEntry);
     console.log('Library post status: ', libraryPost);
   }
 

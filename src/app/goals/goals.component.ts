@@ -40,10 +40,7 @@ export class GoalsComponent implements OnInit {
   collectionId: {userId: string, type: string};
   selectedEntry: Item;
 
-  constructor(private af: AngularFirestore, private auth: AuthService, public dataService: FirestoreDataService  ) {
-    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
-    this.items = this.dataService.getCollection(collectionId);
-  }
+  constructor(private af: AngularFirestore, private auth: AuthService, public dataService: FirestoreDataService  ) {  }
 
   addGoal(startDate: Date, endDate: Date, amount: number): void
   {
@@ -53,8 +50,7 @@ export class GoalsComponent implements OnInit {
  }
 
   ngOnInit(): void {
-    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
-    this.items = this.dataService.getCollection(collectionId);
+    this.goals = this.getAllGoals();
   }
 
   onSubmit(): void{

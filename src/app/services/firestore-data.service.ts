@@ -31,7 +31,9 @@ export class FirestoreDataService {
   }
 
   public getId(object): string {
+    console.log('object.type inside getId is: ', object.type);
     const collectionId = object.userId + '_' + object.type;
+    console.log('collectionId inside getId is: ', collectionId);
     return collectionId;
   }
 
@@ -81,7 +83,7 @@ export class FirestoreDataService {
     return object.book.id;
   }
 
-  // do not remove this method
+  // do not remove this method - brian
   public getDocIdForGoal(object): string {
     return object.goal.id;
   }

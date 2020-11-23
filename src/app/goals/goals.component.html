@@ -41,17 +41,17 @@
   </h2>
 <table class="table table-hover">
   <thead>
-    <tr class="success">
+    <tr>
         <th style="text-align: center;">Amount of Books</th>
         <th>Start Date</th>
         <th>End Date</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of goals">
-      <td class="numData" style="text-align: center;">{{ entry.amount }}</td>
-      <td class="numData">{{ entry.startDate }}</td>
-      <td class="numData">{{ entry.endDate }}</td>
+    <tr *ngFor="let item of items | async">
+      <td class="numData" style="text-align: center;">{{ item.goal.amount }}</td>
+      <td class="numData">{{ item.goal.startDate }}</td>
+      <td class="numData">{{ item.goal.endDate }}</td>
     </tr>
   </tbody>
   </table>

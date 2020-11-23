@@ -36,44 +36,35 @@ export class GoalsComponent implements OnInit {
   queryField3: number;
   updateStatus = false;
   goals: any;
-  goalsRef = '/goals/';
   userId: string;
   collectionId: {userId: string, type: string};
- // nullGoal: Goal = {startDate: date, endDate: date, amount: 52'};
- // nullEntry: Item = {userId: 'Placeholder', type: 'placeHolder', goal: this.nullGoal};
   selectedEntry: Item;
 
-  constructor(private af: AngularFirestore, private auth: AuthService, public dataService: FirestoreDataService  ) {  }
+  constructor(private af: AngularFirestore, private auth: AuthService, public dataService: FirestoreDataService  ) {
+    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
+    this.items = this.dataService.getCollection(collectionId);
+  }
 
   addGoal(startDate: Date, endDate: Date, amount: number): void
   {
    const goalEntry = {userId: this.auth.currentUserId, type: 'goalEntry', goal: {startDate, endDate, amount} };
-   console.log('userId inside of addGoal is : ', goalEntry.userId);
    const goalPost = this.dataService.postGoal(goalEntry);
    console.log('Goal post status: ', goalPost);
  }
 
-  ngOnInit(): void
-  { this.goals = this.getAllGoals(); this.userId = this.auth.currentUserId; }
+  ngOnInit(): void {
+    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
+    this.items = this.dataService.getCollection(collectionId);
+  }
 
   onSubmit(): void{
-      this.addGoal(this.queryField, this.queryField2, this.queryField3);
-      this.goals = this.getAllGoals();
+    this.addGoal(this.queryField, this.queryField2, this.queryField3);
+    this.goals = this.getAllGoals();
  }
 
- getAllGoals(): void {
-  this.userId = this.auth.currentUserId;
-  console.log(this.userId);
-  this.ref = this.af.collection(this.dataService.getId({userId: this.auth.currentUserId, type: 'goalEntry'}));
-
-  this.collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
-  this.items = this.dataService.getCollection(this.collectionId);
-//  this.selectedEntry = this.nullEntry;
-
+  getAllGoals(): void {
+    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry'};
+    this.items = this.dataService.getCollection(collectionId);
 }
-
-// public getGoals(): Array<{startDate, endDate, amount}>{
-//   return ((localStorage.getItem('goalLibrary') != null) ? JSON.parse(localStorage.getItem('goalLibrary')) : null);
-// }
 
 }

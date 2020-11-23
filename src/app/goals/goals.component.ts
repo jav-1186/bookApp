@@ -1,10 +1,5 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import { $ } from 'protractor';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -29,16 +24,15 @@ interface Goal {
   styleUrls: ['./goals.component.css'],
 })
 export class GoalsComponent implements OnInit {
-  key = 'items';
+  items;
+  collectionId: { userId: string, type: string };
   ref: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
   startDate: Date;
   endDate: Date;
   bookNum: number;
   updateStatus = false;
   goals: any;
   userId: string;
-  collectionId: { userId: string; type: string };
   selectedEntry: Item;
 
   constructor(
@@ -48,7 +42,8 @@ export class GoalsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.goals = this.getAllGoals();
+    this.collectionId = { userId: this.auth.currentUserId, type: 'goalEntry' };
+    this.items = this.dataService.getCollection(this.collectionId);
   }
 
   addGoal(): void {
@@ -70,11 +65,5 @@ export class GoalsComponent implements OnInit {
 
   onSubmit(): void {
     this.addGoal();
-    this.goals = this.getAllGoals();
-  }
-
-  getAllGoals(): void {
-    const collectionId = { userId: this.auth.currentUserId, type: 'goalEntry' };
-    this.items = this.dataService.getCollection(collectionId);
   }
 }

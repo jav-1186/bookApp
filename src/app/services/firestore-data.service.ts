@@ -53,6 +53,26 @@ export class FirestoreDataService {
     return true;
   }
 
+  public postGoal(object): boolean {
+    let collectionId;
+    let docId;
+    console.log('This is object type inside postGoal: ', object.type);
+    console.log('This is userId type inside postGoal: ', object.userId);
+    if (object.type && object.userId) {
+      collectionId = this.getCollectionId(object);
+      docId = this.getDocIdForGoal(object);
+      this.db
+        .collection(collectionId)
+        .doc(docId)
+        .set(object)
+        .catch((error) => {
+          console.error('Error adding document: ', error);
+          return false;
+        });
+    }
+    return true;
+  }
+
   public getCollectionId(object): string {
     return object.userId + '_' + object.type;
   }
@@ -61,7 +81,13 @@ export class FirestoreDataService {
     return object.book.id;
   }
 
+  // do not remove this method
+  public getDocIdForGoal(object): string {
+    return object.goal.id;
+  }
+
   public getCollection(request): Observable<any[]> {
     return this.db.collection(this.getCollectionId(request)).valueChanges();
   }
+
 }

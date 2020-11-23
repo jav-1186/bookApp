@@ -8,10 +8,7 @@ import { Observable } from 'rxjs';
 export class FirestoreDataService {
   dataTypes: Array<string> = ['libEntry', 'goalEntry'];
 
-  constructor(private db: AngularFirestore) {
-    // const things = db.collection('libEntry').valueChanges();
-    // things.subscribe(console.log);
-  }
+  constructor(private db: AngularFirestore) {}
 
   public post(object): boolean {
     let collectionId;
@@ -36,7 +33,7 @@ export class FirestoreDataService {
   }
 
   public getDocId(object): string {
-    if (object.type === 'libEntry'){
+    if (object.type === 'libEntry') {
       return object.book.id;
     }
     return object.goal.id;
@@ -45,5 +42,4 @@ export class FirestoreDataService {
   public getCollection(request): Observable<any[]> {
     return this.db.collection(this.getCollectionId(request)).valueChanges();
   }
-
 }

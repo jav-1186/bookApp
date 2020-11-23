@@ -48,7 +48,6 @@ export class GoalsComponent implements OnInit {
 
   addGoal(): void {
     const createdId = this.auth.currentUserId + '_' + this.startDate + this.endDate + this.bookNum;
-    console.log('Created book id: ', createdId);
     const goalEntry = {
       userId: this.auth.currentUserId,
       type: 'goalEntry',

@@ -5,8 +5,8 @@ h1{
 
 .jumbotron{
   margin-bottom: 0;
-  background-image: url('/assets/images/library.jpg');
-  background-color: #403d3d;
+  background-image: url('../../assets/images/library.jpg');
+  background-color: black;
   /* // */
 }
 
